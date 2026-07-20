@@ -506,3 +506,94 @@ a:hover { background: var(--accent-soft); }
 /* L1：卡片箭头改为中性灰（陶土色已用于 chip/eyebrow/CTA，达强调色预算上限） */
 .card__arrow { color: var(--coffee-4); }
 
+
+/* ============================================================
+   豆懂 AI 微课成品 Demo 入口卡片（lesson-01 引用）
+   复用站点 token，与 .cta 视觉同源，但增加 badge 突出"成品"
+   ============================================================ */
+.demo-cta {
+  max-width: var(--w-figure);
+  margin: var(--space-6) auto;
+  padding: 0 var(--gutter);
+}
+.demo-cta__panel {
+  background: var(--hero-bg, var(--tint-warm));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg, 16px);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.demo-cta__text { flex: 1; min-width: 240px; }
+.demo-cta__text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-h3);
+  color: var(--coffee-1);
+  margin: var(--space-2) 0 var(--space-1);
+}
+.demo-cta__text p {
+  margin: 0;
+  color: var(--coffee-2);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+.demo-cta__badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--text-micro);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.5px;
+  padding: 0.2em 0.7em;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+.demo-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: 0 var(--space-5);
+  background: var(--accent-strong, var(--accent));
+  color: #fff;
+  font-weight: var(--fw-bold);
+  font-size: var(--text-body);
+  border-radius: var(--r-md, 12px);
+  text-decoration: none;
+  transition: background var(--dur-2) var(--ease), transform var(--dur-1) var(--ease);
+  white-space: nowrap;
+}
+.demo-cta__btn:hover {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--accent-strong, var(--accent)) 88%, #000 12%);
+  transform: translateY(-1px);
+}
+.demo-cta__btn:active { transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .demo-cta__panel { flex-direction: column; align-items: stretch; }
+  .demo-cta__btn { justify-content: center; }
+}
+
+
+/* ============================================================
+   Utility classes（用于替换 index.html 的内联 style）
+   ============================================================ */
+.u-meta-link {
+  text-decoration: none;
+  color: var(--coffee-4);
+}
+.u-meta-link:hover {
+  color: var(--accent-strong);
+}
+.u-accent-strong {
+  color: var(--accent-strong);
+}
+
+
+

@@ -1,0 +1,20 @@
+{
+  "profile": "ip-character",
+  "operation": "generate",
+  "deliverable": "Square primary IP character illustration for a children English micro-course teacher avatar, suitable for digital-human video driving",
+  "subject": "A friendly, memorable bean-shaped deer spirit teacher named TechDou, with a restrained antler motif and a small technology seed emblem on the chest, wearing a warm casual teacher outfit, holding a small book",
+  "action": "Standing calmly, upper-body visible, looking directly toward the viewer with a warm intelligent smile, mouth naturally closed (suitable for talking-head video driving)",
+  "environment": "Minimal warm studio backdrop with subtle paper and ceramic textures, soft neutral background",
+  "composition": "Centered upper-body portrait, head and shoulders clearly visible, face occupying roughly 30% of frame, generous safe margin, symmetrical framing",
+  "style": "Warm ceramic-humanistic technology aesthetic; soft editorial 3D illustration; simple forms rather than toy-like plastic; friendly and approachable for children",
+  "lighting": "Soft diffused key light from upper left, gentle contact shadow, low contrast, even illumination on face",
+  "palette": "Warm clay, oatmeal, muted terracotta, fog blue, and charcoal accents",
+  "text": "No text",
+  "constraints": [
+    "Face must be front-facing, symmetrical, with both eyes visible and mouth closed",
+    "Keep the silhouette distinctive and easy to redraw",
+    "Use no more than five dominant colors",
+    "Avoid generic robot elements, neon cyberpunk, glossy plastic, and busy backgrounds",
+    "Face should be suitable for avatar animation (clear jawline, visible mouth area, neutral expression)"
+  ]
+}

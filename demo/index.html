@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>豆懂 AI 动物英语微课 · 互动学习</title>
+<meta name="description" content="15 个动物朋友，三大主题，跟着豆哥老师学英语——听发音、读短语、测一测。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="topbar__brand">豆懂 AI<span class="dot">·</span>动物英语微课</span>
+  <a class="topbar__back" href="../../../pages/lesson-01.html">← 返回第 1 节</a>
+  <span class="topbar__spacer"></span>
+  <span class="topbar__meta">15 animals · 3 themes</span>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+
+    <!-- 标题区 + 装饰圆点 -->
+    <div class="hero__header">
+      <div class="hero__dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+      <p class="hero__eyebrow">豆懂 AI · 互动微课</p>
+      <h1 class="hero__title">和 <em>15 位</em> 动物朋友，<br>一起学英语</h1>
+    </div>
+
+    <!-- 单卡片：介绍 + 数字人视频 + stats -->
+    <div class="hero__intro">
+      <div class="hero__intro-main">
+        <p class="hero__lead">
+          点卡片听发音，进卡片读短语、做口语跟读，最后来一轮小测验。
+          这是 AIGC 课程里“从文字到图片到数字人”完整工作流的真实成品。
+        </p>
+
+        <aside class="hero__teacher">
+          <p class="hero__teacher-label">豆哥老师 · AI 数字人</p>
+          <div class="teacher-video-wrap">
+            <video id="teacherVideo" controls preload="metadata" playsinline>
+              <source src="assets/video/teacher_intro.mp4" type="video/mp4">
+            </video>
+            <div class="fallback" id="teacherFallback" style="display:none;">
+              数字人视频加载中
+            </div>
+          </div>
+          <div class="hero__teacher-cta">
+            <button class="btn btn--ghost" id="btnReplayTeacher">↻ 再听一遍</button>
+            <span>Boson AI Higgs Avatar</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat"><strong>15</strong>动物单词</div>
+        <div class="hero__stat"><strong>3</strong>主题场景</div>
+        <div class="hero__stat"><strong>5</strong>题小测验</div>
+        <div class="hero__stat"><strong>AI</strong>老师讲解</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 主题筛选 ============ -->
+  <nav class="theme-tabs" id="themeTabs" aria-label="主题筛选">
+    <button class="theme-tab active" data-theme="all">全部 15</button>
+    <button class="theme-tab" data-theme="farm">农场 5</button>
+    <button class="theme-tab" data-theme="ocean">海洋 5</button>
+    <button class="theme-tab" data-theme="forest">森林 5</button>
+  </nav>
+
+  <!-- ============ 动物卡片网格 ============ -->
+  <section class="animal-grid" id="animalGrid" aria-label="动物卡片"></section>
+
+  <!-- ============ 小测验 ============ -->
+  <section class="quiz-section" id="quizSection">
+    <h2 class="quiz-section__title">来测一测</h2>
+    <p class="quiz-section__hint">随机 5 题，看你能答对几道。</p>
+    <p class="quiz__progress">第 <strong id="qIndex">1</strong> / 5 题 · 得分 <strong id="qScore">0</strong></p>
+    <h3 class="quiz__question" id="qQuestion">准备开始</h3>
+    <div class="quiz__answers" id="qAnswers"></div>
+    <p class="quiz__feedback" id="qFeedback"></p>
+    <div class="quiz__score-bar"><div class="quiz__score-fill" id="qScoreFill"></div></div>
+    <div class="btn-row">
+      <button class="btn btn--ghost" id="btnRestart">重新开始</button>
+      <button class="btn btn--primary" id="btnNext" style="display:none;">下一题 →</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ 动物详情弹层 ============ -->
+<div class="modal-mask" id="modalMask" role="dialog" aria-modal="true" aria-labelledby="modalWord">
+  <div class="modal">
+    <button class="modal__close" id="modalClose" aria-label="关闭">✕</button>
+    <img class="modal__hero" id="modalImg" alt="">
+    <div class="modal__body">
+      <h2 class="modal__word" id="modalWord">word</h2>
+      <p class="modal__cn" id="modalCn">中文</p>
+
+      <div class="modal__section">
+        <p class="modal__label">短语</p>
+        <p class="modal__phrase" id="modalPhrase">phrase</p>
+        <p class="modal__phrase-cn" id="modalPhraseCn">短语中文</p>
+      </div>
+
+      <div class="modal__section">
+        <p class="modal__label">例句</p>
+        <p class="modal__sentence" id="modalSentence">sentence</p>
+        <p class="modal__sentence-cn" id="modalSentenceCn">例句中文</p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--speak" id="btnSpeakWord">读单词</button>
+        <button class="btn btn--speak" id="btnSpeakPhrase">读短语</button>
+        <button class="btn btn--speak" id="btnSpeakSentence">读例句</button>
+      </div>
+
+      <!-- 口语跟读 -->
+      <div class="practice-panel" id="practicePanel">
+        <p class="practice-panel__title">🎤 口语跟读</p>
+        <p class="practice-panel__hint">点“开始录音”后大声读出上面的短语，让 AI 听听你读得怎么样。</p>
+        <div class="practice__target">
+          <p class="practice__target-label">目标短语</p>
+          <p class="practice__target-text" id="practiceTarget">—</p>
+        </div>
+        <div class="recorder-row">
+          <button class="btn btn--practice" id="btnRecord">🎤 开始录音</button>
+          <span class="recorder-status" id="recorderStatus">准备好就点开始</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  豆懂 AI 动物英语微课 · AIGC 课程贯穿项目成品<br>
+  图片由 Agnes AI 生成 · 数字人由 Boson AI Higgs Avatar 生成 · 发音与口语跟读使用浏览器 Web Speech API
+</footer>
+
+<script src="data/words.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
