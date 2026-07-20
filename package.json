@@ -1,0 +1,17 @@
+{
+  "name": "aigc-mini-course",
+  "version": "1.0.0",
+  "private": true,
+  "description": "《普通人也能学会的 AIGC 实战入门》10 节小课讲义站点，基于 lengyi-markdown-editor 内核渲染的静态 GitHub Pages。",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "node scripts/serve.js"
+  },
+  "keywords": ["aigc", "course", "markdown", "github-pages", "static-site"],
+  "author": "techdou",
+  "license": "CC-BY-NC-4.0",
+  "type": "commonjs",
+  "dependencies": {
+    "marked": "^18.0.6"
+  }
+}

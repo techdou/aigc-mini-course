@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 5 节：什么是 Skill 和 API · AIGC 实战入门</title>
+  <meta name="description" content="Skill 是技能包，API 是插座——AI 怎样获得专业能力并连接外部服务。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
+    <span class="topbar__spacer"></span>
+    <span class="topbar__meta">第 5 / 10 节</span>
+  </header>
+
+  <main>
+    <article class="lesson">
+      <p class="lesson__eyebrow">第 5 节</p>
+      <h1 class="lesson__title">什么是 Skill 和 API</h1>
+      <p class="lesson__meta">建议 12 分钟 · 难度 进阶 · 第 5 / 10 节</p>
+
+      <div class="lesson__intro">
+        <p><strong>本节目标</strong></p><p>帮助学生建立完整技术链路，不再把工具能力看成“魔法”。</p>
+        <p><strong>建议时长</strong>：12 分钟</p>
+      </div>
+
+      <div class="lesson__body">
+        <p>学到这里，大家已经能看出一条比较清楚的线索了：人提出需求，用 Prompt 说清楚，LLM 帮忙理解和生成，Agent 负责规划和执行。那接下来还剩下两个经常被提到、但也最容易让初学者犯迷糊的词：Skill 和 API。别担心，这两个词并不复杂，只要找到一个合适的类比，它们会一下子变得很直观。</p>
+<p>先说 Skill。你可以把 Skill 理解成一套“岗位技能包”，也可以把它理解成一份“标准作业流程”。它不是模型本身，而是告诉 Agent：遇到某一类任务时，应该怎么做，调用什么工具，传入哪些参数，怎样检查结果，遇到报错时又该怎样处理。</p>
+<figure><img src="assets/lesson05/01_Skill技能包图.png" alt="图 1：Skill 像岗位技能包，把操作方法固定下来" loading="lazy" /><figcaption>图 1：Skill 像岗位技能包，把操作方法固定下来</figcaption></figure>
+<p>举个很接地气的例子。如果你让一个新人去做“生成图片”这件事，他可能知道目标，却不知道具体走哪套流程。Skill 的意义就在这里——它把流程、工具和规则都收进一个可复用的包里。这样 Agent 不必每次都从零摸索，而是可以按相对稳定的方法去完成任务。</p>
+<p>再说 API。API 最容易理解的方式，就是把它看成“标准接口”或者“标准插座”。你家里插电器，不必关心墙后面所有复杂电路，只要插头和插座对得上，就能通电。软件世界也是一样。一个应用、一个 Skill，或者一个工作流，要想调用外部模型服务，就要通过标准化的 API 接口把请求发过去，再把结果拿回来。</p>
+<figure><img src="assets/lesson05/02_API插座类比图.png" alt="图 2：API 像标准插座，让应用能够调用外部能力" loading="lazy" /><figcaption>图 2：API 像标准插座，让应用能够调用外部能力</figcaption></figure>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+    A[用户需求] --&gt; B[Agent 理解任务]
+    B --&gt; C[Skill 决定怎么做]
+    C --&gt; D[API 发出请求]
+    D --&gt; E[模型服务返回结果]
+    E --&gt; F[图片 视频 语音 网页]</pre></div><p>现在，Skill 和 API 一旦连起来，整条链路就非常完整了。比如我们后面要用到的 Agnes 工作流，本质上就是把图片和视频生成能力通过 API 接进来，再通过可视化工作流界面让人更容易使用；而 Boson 这样的语音和数字人能力，也同样是通过对应 API 被调用，再由 Skill 或脚本封装成更适合 Agent 使用的形式。</p>
+<figure><img src="assets/lesson05/03_完整调用链路图.png" alt="图 3：完整调用链路——Agent、Skill 与 API 是怎样协作的" loading="lazy" /><figcaption>图 3：完整调用链路——Agent、Skill 与 API 是怎样协作的</figcaption></figure>
+<p>这一节有一个特别值得学生建立的认知：当你真正理解 Skill 和 API 之后，你面对工具就不容易“神化”它们。你会知道，很多看似神奇的产品，其实都是在底层模型能力之上，做了更友好的封装、界面和流程组织。这样你以后看到新工具，也不会一下子被吓住，而是会问：它用了什么模型，靠什么接口，封装成了什么能力，适合什么任务。</p>
+<h3>屏幕演示建议</h3>
+<p>这一节不建议让学生一开始就看大量接口文档，而是通过三张图来理解。先用 Skill 技能包图建立直觉，再用 API 插座图解释“连接能力”的概念，最后用完整链路图收束。若要加一个现场示例，建议只口头举例：比如“用户说要一张宣传图，Agent 通过 Skill 调用图片 API，模型生成结果，再回到工作流中预览”。</p>
+<h3>本节跟做</h3>
+<p>请学生试着用一句自己的话解释 Skill 和 API。只要能说成“Skill 是做事方法包，API 是连接外部能力的接口”，基本上就已经讲清楚了。你也可以顺手让学生把自己的真实任务想一想：如果这个任务要用到图片、视频或语音能力，背后大概率就会经过某种 API。</p>
+<h3>本节小结</h3>
+<p>这一节我们真正搭起了课程的底层骨架：<strong>Agent 是会执行的协作体，Skill 是它的专业技能包，API 是它连接外部模型能力的标准接口。</strong> 下一节，我们就开始进入更落地的实操场景，用一个很典型的文件整理案例，看看 Agent 是怎样真正“干活”的。</p>
+
+      </div>
+    </article>
+
+    <nav class="lesson-nav" aria-label="上下节导航">
+      <a class="lesson-nav__link" href="lesson-04.html" rel="prev">
+         <span class="lesson-nav__label">← 上一节</span>
+         <span class="lesson-nav__title">LLM 和 Agent 有什么区别</span>
+       </a>
+      <a class="lesson-nav__link lesson-nav__link--next" href="lesson-06.html" rel="next">
+         <span class="lesson-nav__label">下一节 →</span>
+         <span class="lesson-nav__title">Agent 为什么能操作文件和软件</span>
+       </a>
+    </nav>
+
+    <section class="cta">
+      <div class="cta__panel">
+        <div class="cta__text">
+          想系统地走完整条学习路线？<br>
+          <strong>了解进阶课程</strong>，把这套方法变成你能持续用的能力。
+        </div>
+        <a class="cta__btn" href="https://github.com/techdou" target="_blank" rel="noopener">了解进阶课程 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 techdou · AIGC 实战入门 · <a href="index.html">返回目录</a>
+  </footer>
+
+  <!-- mermaid 客户端渲染（与 lengyi-markdown-editor 同源同版本 v10） -->
+  <script type="module" src="assets/mermaid-init.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+本仓库采用混合许可，按内容类型分别授权：
+
+============================================================
+1. 课程内容（讲义正文与配图）
+============================================================
+适用文件：
+  - src/*.md（10 节讲义 Markdown 源）
+  - lesson-01.html ~ lesson-10.html（渲染后的讲义页面）
+  - assets/lesson01~10/*.png（课程配图）
+  - index.html 中的课程文案部分
+
+许可：Creative Commons Attribution-NonCommercial 4.0 International
+     (CC BY-NC 4.0)
+全文：https://creativecommons.org/licenses/by-nc/4.0/
+
+你可以：
+  - 分享 — 以任何媒介复制与分发本作品
+  - 演绎 — 修改、转换本作品
+
+但必须遵守：
+  - 署名 — 注明作者（techdou）与原作品链接
+  - 非商业性使用 — 不得用于商业目的（包括但不限于付费课程、
+    付费社群、企业内训、带商业广告的分发）
+
+课程付费版本与商业授权请单独联系作者。
+
+============================================================
+2. 代码与站点框架（构建脚本、样式、模板）
+============================================================
+适用文件：
+  - scripts/build.js, scripts/serve.js
+  - assets/tokens.css, assets/site.css, assets/mermaid-init.js
+  - index.html, lesson-*.html 中的 HTML 结构与 CSS class 命名
+  - package.json
+
+许可：MIT License
+
+Copyright (c) 2026 techdou
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+============================================================
+3. 设计规格文档
+============================================================
+适用文件：
+  - design-system/aigc-mini-course-design-spec.md
+
+许可：CC BY-NC 4.0（同课程内容）
+
+============================================================
+4. 第三方依赖（运行时通过 CDN 加载，不属于本仓库）
+============================================================
+  - mermaid v10：MIT License，https://github.com/mermaid-js/mermaid
+  - Nunito 字体：SIL Open Font License 1.1，Google Fonts
+  - lengyi-markdown-editor（同源渲染内核）：MIT License
+    https://github.com/woyin2024/lengyi-markdown-editor

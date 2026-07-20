@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 3 节：什么是提示词 Prompt · AIGC 实战入门</title>
+  <meta name="description" content="把模糊想法说清楚——背景、目标、对象、要求、输出五要素法。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
+    <span class="topbar__spacer"></span>
+    <span class="topbar__meta">第 3 / 10 节</span>
+  </header>
+
+  <main>
+    <article class="lesson">
+      <p class="lesson__eyebrow">第 3 节</p>
+      <h1 class="lesson__title">什么是提示词 Prompt</h1>
+      <p class="lesson__meta">建议 12 分钟 · 难度 入门 · 第 3 / 10 节</p>
+
+      <div class="lesson__intro">
+        <p><strong>本节目标</strong></p><p>让学生学会把模糊想法说清楚，能立刻写出可用 Prompt。</p>
+        <p><strong>建议时长</strong>：12 分钟</p>
+      </div>
+
+      <div class="lesson__body">
+        <p>很多人用 AI 效果一般，不是因为模型太差，而是因为自己给出去的任务太模糊。你对人说话都需要把意思讲清楚，对 AI 当然也一样。所以 Prompt 不是神秘咒语，也不是“越长越高级”的一段话。Prompt 本质上就是任务表达，是你交给 AI 的一份清楚说明书。</p>
+<p>在课堂上，我最喜欢用一句很简单的话来解释 Prompt：<strong>Prompt 不是让 AI 猜你的心思，而是让 AI 明白你的心思。</strong></p>
+<figure><img src="assets/lesson03/01_Prompt五要素卡.png" alt="图 1：Prompt 五要素卡——背景、目标、对象、要求、输出" loading="lazy" /><figcaption>图 1：Prompt 五要素卡——背景、目标、对象、要求、输出</figcaption></figure>
+<p>为了让初学者马上上手，我们把 Prompt 拆成五个最容易记住的部分。先说背景，让 AI 知道你现在是什么场景；再说目标，让 AI 明白你要完成什么；接着说对象，也就是内容是给谁看的；然后说要求，包括风格、限制、必须保留的内容；最后说输出，让它知道你最终想要的是什么格式。</p>
+<p>这五部分一旦完整起来，你会发现，原本“模糊的一句话”就开始长出可执行的边界。举个最简单的例子，如果你只说“帮我做个英语网页”，模型其实只能大概猜；可如果你说“为小学三年级学生制作一个单文件动物英语学习网页，包含五个单词、中文释义、点击发音按钮和选择题小游戏，页面要适合电脑和手机浏览器，最终输出一个可直接打开的 HTML 文件”，那么 AI 的工作方向就立刻清晰了。</p>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+    A[模糊需求] --&gt; B[补全背景]
+    B --&gt; C[明确对象与目标]
+    C --&gt; D[加入要求与限制]
+    D --&gt; E[明确最终输出]
+    E --&gt; F[得到更稳定结果]</pre></div><figure><img src="assets/lesson03/02_模糊到清晰对比图.png" alt="图 2：从模糊指令到结构化 Prompt 的前后对比" loading="lazy" /><figcaption>图 2：从模糊指令到结构化 Prompt 的前后对比</figcaption></figure>
+<p>到这里，请大家一定要有一个新的判断标准：好 Prompt 不一定长，但一定清楚。它不追求华丽，而追求可执行。很多同学刚开始会紧张，觉得自己不会写 Prompt。其实只要你能把需求说给一个认真负责的助理听明白，你就已经会写 Prompt 了。</p>
+<p>为了让你真正把这件事做出来，我们现在把刚才的五要素落到一个可以直接复用的课堂模板上。你可以这样写：我现在要做什么，给谁用，已经有什么材料，必须满足哪些要求，最后请输出什么。这个模板看上去很朴素，但它是最适合新手稳定起步的方式。</p>
+<figure><img src="assets/lesson03/03_课堂练习任务卡.png" alt="图 3：课堂练习——把你的真实需求写成一条清楚的 Prompt" loading="lazy" /><figcaption>图 3：课堂练习——把你的真实需求写成一条清楚的 Prompt</figcaption></figure>
+<h3>屏幕演示建议</h3>
+<p>这一节适合做一个很短但非常直观的对比实验。先输入一句模糊 Prompt，例如“帮我做一个英语学习网页”；展示模型给出的含糊结果。然后再输入结构化版本，让学生看到结果明显更可控。演示的重点不是追求最终网页一次生成成功，而是让学生看懂：表达越清楚，结果越稳定。</p>
+<h3>本节跟做</h3>
+<p>请每位学生把第一节写下的“真实任务”重新整理成一条 Prompt。你不必追求写得华丽，只要把背景、目标、对象、要求和输出说清楚即可。完成之后，可以互相交换着看一眼，判断一下：这条 Prompt 能不能让另一个人也清楚知道任务是什么？如果能，基本就已经合格了。</p>
+<h3>本节小结</h3>
+<p>这一节最重要的收获，不是记住 Prompt 这个英文词，而是学会一种表达方式：<strong>当你越能把任务讲清楚，AI 就越像一个靠谱的协作对象。</strong> 下一节我们要继续往前走，看看为什么有的 AI 只能“说”，有的 AI 却能“做”，也就是 LLM 和 Agent 的区别。</p>
+
+      </div>
+    </article>
+
+    <nav class="lesson-nav" aria-label="上下节导航">
+      <a class="lesson-nav__link" href="lesson-02.html" rel="prev">
+         <span class="lesson-nav__label">← 上一节</span>
+         <span class="lesson-nav__title">什么是大语言模型 LLM</span>
+       </a>
+      <a class="lesson-nav__link lesson-nav__link--next" href="lesson-04.html" rel="next">
+         <span class="lesson-nav__label">下一节 →</span>
+         <span class="lesson-nav__title">LLM 和 Agent 有什么区别</span>
+       </a>
+    </nav>
+
+    <section class="cta">
+      <div class="cta__panel">
+        <div class="cta__text">
+          想系统地走完整条学习路线？<br>
+          <strong>了解进阶课程</strong>，把这套方法变成你能持续用的能力。
+        </div>
+        <a class="cta__btn" href="https://github.com/techdou" target="_blank" rel="noopener">了解进阶课程 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 techdou · AIGC 实战入门 · <a href="index.html">返回目录</a>
+  </footer>
+
+  <!-- mermaid 客户端渲染（与 lengyi-markdown-editor 同源同版本 v10） -->
+  <script type="module" src="assets/mermaid-init.js"></script>
+</body>
+</html>

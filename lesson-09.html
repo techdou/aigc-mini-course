@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 9 节：从口播稿到数字人和交互网页 · AIGC 实战入门</title>
+  <meta name="description" content="把口播稿变成数字人和可点击的互动网页，串联起整条产出链。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
+    <span class="topbar__spacer"></span>
+    <span class="topbar__meta">第 9 / 10 节</span>
+  </header>
+
+  <main>
+    <article class="lesson">
+      <p class="lesson__eyebrow">第 9 节</p>
+      <h1 class="lesson__title">从口播稿到数字人和交互网页</h1>
+      <p class="lesson__meta">建议 12 分钟 · 难度 实战 · 第 9 / 10 节</p>
+
+      <div class="lesson__intro">
+        <p><strong>本节目标</strong></p><p>把文字、语音、数字人和网页整合成一个真正能展示的小作品。</p>
+        <p><strong>建议时长</strong>：12 分钟</p>
+      </div>
+
+      <div class="lesson__body">
+        <p>如果说上一节我们解决的是“让画面出现”，那这一节我们解决的，就是“让作品开口说话，而且能真正被使用”。这也是很多普通学习者对 AIGC 最有感的一步：原来一段文字，不仅可以变成口播稿，还可以进一步变成语音、变成数字人口播，再被嵌进一个可点击的网页里，形成一个有内容、有互动、有表现力的小作品。</p>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+    A[口播稿] --&gt; B[TTS 生成语音]
+    B --&gt; C[数字人口播视频]
+    C --&gt; D[嵌入互动网页]
+    D --&gt; E[形成最终微课页面]</pre></div><figure><img src="assets/lesson09/01_口播链路图.png" alt="图 1：从口播稿到数字人口播与互动网页的整合链路" loading="lazy" /><figcaption>图 1：从口播稿到数字人口播与互动网页的整合链路</figcaption></figure>
+<p>先从口播稿说起。口播稿和普通文章不太一样，它要短句、清楚、容易说出口。比如面对小学生，句子就不能太长，也不能全是抽象概念。AI 在这里的一个很大优势，是它能先帮你起一个可用初稿。你再稍微修改几轮，就能得到一段比较自然的讲述文案。</p>
+<p>接着是 TTS，也就是文字转语音。你可以把它想成“先让文字说起来”。这一步往往非常高效，尤其适合做课程试讲、短视频草稿或者产品演示配音。等语音确定之后，再把它送进数字人系统，给一个人物头像或半身形象去驱动，就会得到数字人口播视频。这样一来，即使暂时没有真人出镜，也能形成一个基础的讲解效果。</p>
+<figure><img src="assets/lesson09/02_数字人页面占位图.png" alt="图 2：数字人口播页面占位图，后续可替换为真实成品" loading="lazy" /><figcaption>图 2：数字人口播页面占位图，后续可替换为真实成品</figcaption></figure>
+<p>最后一步，是把它重新放回网页里。因为我们这套课的贯穿项目，本来就要产出一个“动物英语微课”页面，所以最自然的做法，就是把数字人口播放进网页顶部或讲解区，让孩子先听一段引导，再去点击单词、练习答题。这样一来，图片、语音、视频和网页，就不再是四个分散成果，而是同一个项目里的不同部件。</p>
+<figure><img src="assets/lesson09/03_最终页面整合图.png" alt="图 3：互动网页、口播视频与练习区整合后的最终页面示意" loading="lazy" /><figcaption>图 3：互动网页、口播视频与练习区整合后的最终页面示意</figcaption></figure>
+<p>这一节还要提醒大家一个很重要的现实问题：数字人、语音和视频往往更依赖具体服务状态，生成时间也更不稳定。所以在真正录课或做项目时，最稳妥的方式不是把全部希望都压在现场生成上，而是提前准备好一份备用结果。这样课程节奏就不会被技术等待打断。</p>
+<h3>屏幕演示建议</h3>
+<p>这一节的节奏最好是“展示脚本—展示语音—展示数字人—展示网页整合”。如果数字人暂时未补齐，就明确告诉学生这里先展示占位图和流程图，后续会替换成真实成品。这样既诚实，也不会让整套课出现结构断裂。</p>
+<h3>本节跟做</h3>
+<p>请学生尝试为“动物英语微课”写一段 60 到 100 字的简短开场白。要求像对小朋友说话，语言简单、友好、节奏轻快。然后再思考：如果把这段文字拿去做语音和数字人，哪些词会太拗口、哪些句子需要更短？这个小练习会帮助学生形成“为声音而写作”的意识。</p>
+<h3>本节小结</h3>
+<p>这一节最重要的感受应该是：<strong>AIGC 并不是零散工具的拼接，而是可以一步步把文字、语音、视频和网页整合成一个完整作品。</strong> 下一节，我们将做最后的收束，帮助大家判断为什么现在值得学习 AI、接下来应该怎样学，以及如何自然地进入更系统的课程。</p>
+
+      </div>
+    </article>
+
+    <nav class="lesson-nav" aria-label="上下节导航">
+      <a class="lesson-nav__link" href="lesson-08.html" rel="prev">
+         <span class="lesson-nav__label">← 上一节</span>
+         <span class="lesson-nav__title">从文字到图片和视频的生成工作流</span>
+       </a>
+      <a class="lesson-nav__link lesson-nav__link--next" href="lesson-10.html" rel="next">
+         <span class="lesson-nav__label">下一节 →</span>
+         <span class="lesson-nav__title">AI 趋势、学习路径和后续课程</span>
+       </a>
+    </nav>
+
+    <section class="cta">
+      <div class="cta__panel">
+        <div class="cta__text">
+          想系统地走完整条学习路线？<br>
+          <strong>了解进阶课程</strong>，把这套方法变成你能持续用的能力。
+        </div>
+        <a class="cta__btn" href="https://github.com/techdou" target="_blank" rel="noopener">了解进阶课程 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 techdou · AIGC 实战入门 · <a href="index.html">返回目录</a>
+  </footer>
+
+  <!-- mermaid 客户端渲染（与 lengyi-markdown-editor 同源同版本 v10） -->
+  <script type="module" src="assets/mermaid-init.js"></script>
+</body>
+</html>

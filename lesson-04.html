@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 4 节：LLM 和 Agent 有什么区别 · AIGC 实战入门</title>
+  <meta name="description" content="顾问与助理之分：为什么有的 AI 只能说，有的 AI 却能做。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
+    <span class="topbar__spacer"></span>
+    <span class="topbar__meta">第 4 / 10 节</span>
+  </header>
+
+  <main>
+    <article class="lesson">
+      <p class="lesson__eyebrow">第 4 节</p>
+      <h1 class="lesson__title">LLM 和 Agent 有什么区别</h1>
+      <p class="lesson__meta">建议 11 分钟 · 难度 入门 · 第 4 / 10 节</p>
+
+      <div class="lesson__intro">
+        <p><strong>本节目标</strong></p><p>把“会回答”和“会执行”讲透，让学生真正理解智能体。</p>
+        <p><strong>建议时长</strong>：11 分钟</p>
+      </div>
+
+      <div class="lesson__body">
+        <p>到现在为止，我们已经知道，大语言模型擅长理解和生成语言，也知道 Prompt 是我们交给 AI 的任务说明书。那为什么有些 AI 只能聊天，有些 AI 却能读文件、改文档、整理资料，甚至一步步替你把事情做完？这背后差的，并不是“会不会说话”，而是“会不会执行”。</p>
+<p>如果要用最口语的方式来讲，LLM 更像一位坐在你对面的顾问。你问它问题，它给你建议，帮你分析、整理、起草内容。Agent 则更像一位经过你授权的助理。它不仅会给建议，还会根据目标拆分步骤，调用工具，一步一步把任务推进下去。</p>
+<figure><img src="assets/lesson04/01_顾问与助理对比图.png" alt="图 1：把 LLM 看成顾问，把 Agent 看成助理" loading="lazy" /><figcaption>图 1：把 LLM 看成顾问，把 Agent 看成助理</figcaption></figure>
+<p>这个差别看上去很小，但在实际使用里完全不是一个层级。比如你说“帮我整理这个文件夹”，如果只是普通的 LLM，它可能会告诉你应该怎样分类、怎样命名；但如果是具备工具能力的 Agent，它就可能在你的授权下先读取目录，再分析文件内容，再提出分类方案，最后真正生成文件清单、重命名建议，甚至执行整理。</p>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart TD
+    A[收到任务] --&gt; B[理解目标]
+    B --&gt; C[拆解为多个步骤]
+    C --&gt; D[调用文件 浏览器 脚本等工具]
+    D --&gt; E[读取工具返回结果]
+    E --&gt; F[继续判断下一步]
+    F --&gt; G[输出最终结果]</pre></div><figure><img src="assets/lesson04/02_工具调用回路图.png" alt="图 2：Agent 的典型工作回路" loading="lazy" /><figcaption>图 2：Agent 的典型工作回路</figcaption></figure>
+<p>所以，Agent 不是某个单独的模型名字，而是一种“模型加工具加流程”的工作方式。它的关键价值，就在于把“我有一个目标”变成“我知道接下来要做哪几步，而且我真的能动手去做”。</p>
+<p>不过这里有一个特别重要的安全边界，必须反复提醒。Agent 不是天然拥有整台电脑的控制权。它能做什么，取决于三个条件：产品有没有提供对应工具，用户有没有明确授权，以及当前运行环境是否允许。也就是说，Agent 的能力并不神秘，它是建立在可见、可管、可限制的执行机制上的。</p>
+<figure><img src="assets/lesson04/03_权限边界图.png" alt="图 3：Agent 只有在授权范围内才可以访问文件和工具" loading="lazy" /><figcaption>图 3：Agent 只有在授权范围内才可以访问文件和工具</figcaption></figure>
+<p>为了帮助大家更准确地区分，我们来做一个小判断。像“请帮我总结这段会议纪要”“请帮我把这段文字改得更口语化”，这类任务主要依赖 LLM 的语言能力；而“请读取这个文件夹里的资料并生成分类清单”“请根据这份资料制作一个五页 PPT”，就更接近 Agent 的执行型任务。两者并不对立，很多时候 Agent 的底层仍然要靠 LLM 来理解任务，只是它在上面又加了一层“行动力”。</p>
+<h3>屏幕演示建议</h3>
+<p>这一节可以用两个并排的小示例来录。左边示例让普通 LLM 说明“如果你要整理文件夹，建议怎样做”；右边示例则展示 Agent 的工作流程图，让学生看懂：前者给建议，后者走流程。即使这一节还不真正执行文件整理，也已经能为下一节的实操做好心理预备。</p>
+<h3>本节跟做</h3>
+<p>请学生拿出自己前面写过的真实任务，判断一下它更像“需要一个 LLM 帮我出内容”，还是“需要一个 Agent 帮我执行步骤”。如果是后者，再补充一句：这个任务需要哪些工具？比如文件、浏览器、表格、PPT、网页生成，还是图片与视频能力。</p>
+<h3>本节小结</h3>
+<p>这一节的关键句是：<strong>LLM 主要负责理解与生成，Agent 在此基础上进一步负责规划、调用工具和执行任务。</strong> 下一节我们再往前走一步，把 Agent 背后最像“技能包”和“插座”的两件事讲清楚，那就是 Skill 和 API。</p>
+
+      </div>
+    </article>
+
+    <nav class="lesson-nav" aria-label="上下节导航">
+      <a class="lesson-nav__link" href="lesson-03.html" rel="prev">
+         <span class="lesson-nav__label">← 上一节</span>
+         <span class="lesson-nav__title">什么是提示词 Prompt</span>
+       </a>
+      <a class="lesson-nav__link lesson-nav__link--next" href="lesson-05.html" rel="next">
+         <span class="lesson-nav__label">下一节 →</span>
+         <span class="lesson-nav__title">什么是 Skill 和 API</span>
+       </a>
+    </nav>
+
+    <section class="cta">
+      <div class="cta__panel">
+        <div class="cta__text">
+          想系统地走完整条学习路线？<br>
+          <strong>了解进阶课程</strong>，把这套方法变成你能持续用的能力。
+        </div>
+        <a class="cta__btn" href="https://github.com/techdou" target="_blank" rel="noopener">了解进阶课程 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 techdou · AIGC 实战入门 · <a href="index.html">返回目录</a>
+  </footer>
+
+  <!-- mermaid 客户端渲染（与 lengyi-markdown-editor 同源同版本 v10） -->
+  <script type="module" src="assets/mermaid-init.js"></script>
+</body>
+</html>
