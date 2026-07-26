@@ -335,6 +335,11 @@ function renderIndex() {
 
   const introPage = EXTRA_PAGES[0];
 
+  // v5.0: 海报作为 catalog 第一个 feature 元素（与 card--feature 等宽对齐）
+  const heroBanner = `<a class="card card--feature card--hero-banner" href="${introPage.outFile}">
+      <img src="assets/promo/01_课程主视觉海报.png" alt="课程主视觉：普通人也能学会的 AIGC 实战入门" class="hero-banner__img" loading="lazy" />
+    </a>`;
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -363,14 +368,12 @@ function renderIndex() {
       <a class="hero__cta" href="${introPage.outFile}">从课程总开场开始 →</a>
       <a class="hero__cta hero__cta--secondary" href="lesson-01.html">直接进第 1 节</a>
     </div>
-    <figure class="hero__art" style="margin:24px 0 0;text-align:center;">
-      <img src="assets/promo/01_课程主视觉海报.png" alt="课程主视觉：普通人也能学会的 AIGC 实战入门" style="max-width:100%;border-radius:12px;box-shadow:0 8px 28px rgba(31,41,55,.12);" loading="lazy" />
-    </figure>
   </section>
 
   <main class="catalog" id="catalog">
     <h2 class="catalog__heading">课程目录 · 10 节核心讲义</h2>
     <div class="catalog__grid">
+      ${heroBanner}
       ${cards}
     </div>
 

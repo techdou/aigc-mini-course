@@ -595,5 +595,30 @@ a:hover { background: var(--accent-soft); }
   color: var(--accent-strong);
 }
 
+/* ============================================================
+   v5.0 课程主视觉海报 banner（作为 catalog 第一个 feature）
+   与 card--feature 等宽，图片撑满，保持 16:9，无内边距
+   ============================================================ */
+.card--hero-banner {
+  padding: 0;                 /* 覆盖 .card 的 space-6 内边距，让图片贴边 */
+  background: var(--surface); /* 不用 amber-soft，图片本身有配色 */
+  border: 1px solid var(--line);
+  overflow: hidden;           /* 圆角裁剪图片 */
+  display: block;
+}
+.card--hero-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--line-strong);
+}
+.hero-banner__img {
+  display: block;
+  width: 100%;                /* 撑满 feature 卡片宽度（与 card--feature 等宽） */
+  height: auto;
+  aspect-ratio: 16 / 9;       /* 保持海报原片 16:9，PC 端不变形 */
+  object-fit: cover;
+  object-position: center;
+}
+
 
 
