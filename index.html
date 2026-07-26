@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>普通人也能学会的 AIGC 实战入门 · 10 节小课</title>
-  <meta name="description" content="面向零基础成人的 AIGC 实战入门课，10 节短课讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流，全程贯穿一个真实项目。">
+  <title>普通人也能学会的 AIGC 实战入门 · 10 节小课 + 政企普及附录</title>
+  <meta name="description" content="面向零基础成人的 AIGC 实战入门课，10 节短课 + 4 个合规与产业附录，讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流，全程贯穿一个真实项目。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
@@ -15,31 +15,35 @@
   <header class="topbar">
     <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
     <span class="topbar__spacer"></span>
-    <a class="topbar__meta u-meta-link" href="#catalog">浏览目录 ↓</a>
+    <a class="topbar__meta" href="#catalog" style="text-decoration:none;color:var(--coffee-4)">浏览目录 ↓</a>
   </header>
 
   <section class="hero">
     <div class="hero__inner">
-      <p class="hero__eyebrow">techdou · AIGC mini course</p>
+      <p class="hero__eyebrow">techdou · AIGC mini course · v5.0 政企普及版</p>
       <h1 class="hero__title">普通人也能学会的<br>AIGC 实战入门</h1>
-      <p class="hero__sub">10 节短课，每节一杯咖啡的时间。从认识 AI 到把一个真实想法做成能交付的作品——零基础也能跟得上。</p>
-      <a class="hero__cta" href="lesson-01.html">从第 1 节开始 →</a>
+      <p class="hero__sub">10 节核心讲义 + 4 个合规与产业附录。从认识 AI 到把一个真实想法做成能交付的作品——零基础也能跟得上。</p>
+      <a class="hero__cta" href="intro.html">从课程总开场开始 →</a>
+      <a class="hero__cta hero__cta--secondary" href="lesson-01.html">直接进第 1 节</a>
     </div>
+    <figure class="hero__art" style="margin:24px 0 0;text-align:center;">
+      <img src="assets/promo/01_课程主视觉海报.png" alt="课程主视觉：普通人也能学会的 AIGC 实战入门" style="max-width:100%;border-radius:12px;box-shadow:0 8px 28px rgba(31,41,55,.12);" loading="lazy" />
+    </figure>
   </section>
 
   <main class="catalog" id="catalog">
-    <h2 class="catalog__heading">课程目录</h2>
+    <h2 class="catalog__heading">课程目录 · 10 节核心讲义</h2>
     <div class="catalog__grid">
       <a class="card card--feature" href="lesson-01.html">
       <span class="card__num">01</span>
       <h3 class="card__title">AI 到底能为普通人做什么</h3>
       <p class="card__desc">从三个真实成果出发，建立对 AI 能力边界的正确预期——不是陪聊，是把想法做出来。</p>
       <span class="card__meta">
-        <strong class="u-accent-strong">开篇 · 从这里开始</strong> · 
+        <strong style="color:var(--accent-strong)">开篇 · 从这里开始</strong> · 
         建议 8 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-02.html">
+      <a class="card " href="lesson-02.html">
       <span class="card__num">02</span>
       <h3 class="card__title">什么是大语言模型 LLM</h3>
       <p class="card__desc">用超级学霸类比讲清 LLM，建立 Token、训练、能力边界三件事的直觉。</p>
@@ -48,7 +52,7 @@
         建议 12 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-03.html">
+      <a class="card " href="lesson-03.html">
       <span class="card__num">03</span>
       <h3 class="card__title">什么是提示词 Prompt</h3>
       <p class="card__desc">把模糊想法说清楚——背景、目标、对象、要求、输出五要素法。</p>
@@ -57,7 +61,7 @@
         建议 12 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-04.html">
+      <a class="card " href="lesson-04.html">
       <span class="card__num">04</span>
       <h3 class="card__title">LLM 和 Agent 有什么区别</h3>
       <p class="card__desc">顾问与助理之分：为什么有的 AI 只能说，有的 AI 却能做。</p>
@@ -66,7 +70,7 @@
         建议 10 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-05.html">
+      <a class="card " href="lesson-05.html">
       <span class="card__num">05</span>
       <h3 class="card__title">什么是 Skill 和 API</h3>
       <p class="card__desc">Skill 是技能包，API 是插座——AI 怎样获得专业能力并连接外部服务。</p>
@@ -75,7 +79,7 @@
         建议 12 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-06.html">
+      <a class="card " href="lesson-06.html">
       <span class="card__num">06</span>
       <h3 class="card__title">Agent 为什么能操作文件和软件</h3>
       <p class="card__desc">拆穿 Agent 的神通广大：背后是工具、权限与安全边界。</p>
@@ -84,16 +88,16 @@
         建议 13 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-07.html">
+      <a class="card " href="lesson-07.html">
       <span class="card__num">07</span>
       <h3 class="card__title">不同人群怎样使用 Agent</h3>
-      <p class="card__desc">学生、家长、上班族三类场景，同一套 Agent 思维怎么落地。</p>
+      <p class="card__desc">家长、老师、办公人员三类场景，同一套 Agent 思维怎么落地。</p>
       <span class="card__meta">
         
         建议 13 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-08.html">
+      <a class="card " href="lesson-08.html">
       <span class="card__num">08</span>
       <h3 class="card__title">从文字到图片和视频的生成工作流</h3>
       <p class="card__desc">一条完整多模态工作流：Prompt → 图片 → 视频的节点串联。</p>
@@ -102,7 +106,7 @@
         建议 13 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
-      <a class="card" href="lesson-09.html">
+      <a class="card " href="lesson-09.html">
       <span class="card__num">09</span>
       <h3 class="card__title">从口播稿到数字人和交互网页</h3>
       <p class="card__desc">把口播稿变成数字人和可点击的互动网页，串联起整条产出链。</p>
@@ -116,15 +120,50 @@
       <h3 class="card__title">AI 趋势、学习路径和后续课程</h3>
       <p class="card__desc">为什么现在值得学，普通人怎么继续学，以及下一步的进阶路径。</p>
       <span class="card__meta">
-        <strong class="u-accent-strong">结课 · 含进阶路线</strong> · 
+        <strong style="color:var(--accent-strong)">结课 · 含进阶路线</strong> · 
         建议 13 分钟 <span class="card__arrow">→</span>
       </span>
     </a>
     </div>
+
+    <h2 class="catalog__heading" style="margin-top:56px;">附录 · 合规与产业专题</h2>
+    <p style="color:var(--coffee-3);margin:-8px 0 20px;font-size:15px;">政府/企业 AIGC 普及推广的权威背书层——法规、安全、国产化、行业实证。</p>
+    <div class="catalog__grid">
+      <a class="card card--appendix" href="appendix-a.html">
+      <span class="card__num">A</span>
+      <h3 class="card__title">AIGC 合规与法规</h3>
+      <p class="card__desc">生成式 AI 服务管理暂行办法、数据安全法、个保法、深度合成管理规定——红线在哪。</p>
+      <span class="card__meta">建议 15 分钟 <span class="card__arrow">→</span></span>
+    </a>
+      <a class="card card--appendix" href="appendix-b.html">
+      <span class="card__num">B</span>
+      <h3 class="card__title">AIGC 安全与风险</h3>
+      <p class="card__desc">数据泄露、幻觉、prompt 注入、深度合成滥用——真实案例与防范清单。</p>
+      <span class="card__meta">建议 15 分钟 <span class="card__arrow">→</span></span>
+    </a>
+      <a class="card card--appendix" href="appendix-c.html">
+      <span class="card__num">C</span>
+      <h3 class="card__title">国产化与自主可控</h3>
+      <p class="card__desc">文心/通义/智谱/DeepSeek/Kimi/豆包/星火——国产大模型概览与选型建议。</p>
+      <span class="card__meta">建议 15 分钟 <span class="card__arrow">→</span></span>
+    </a>
+      <a class="card card--appendix" href="appendix-d.html">
+      <span class="card__num">D</span>
+      <h3 class="card__title">行业落地实证</h3>
+      <p class="card__desc">政务、教育、医疗、制造、金融——AIGC 在真实行业的落地案例。</p>
+      <span class="card__meta">建议 15 分钟 <span class="card__arrow">→</span></span>
+    </a>
+    </div>
+
+    <section class="catalog__pdf" style="margin:56px auto 0;padding:28px;border:1px solid var(--coffee-1);border-radius:12px;background:var(--cream-0);max-width:720px;text-align:center;">
+      <h3 style="margin:0 0 8px;color:var(--coffee-4);">需要完整印刷版？</h3>
+      <p style="color:var(--coffee-3);margin:0 0 16px;">74 页 A4 PDF 宣传册，含封面、版权页、目录、全部讲义与附录，适合政企培训现场分发。</p>
+      <a class="hero__cta" href="https://github.com/techdou/aigc-mini-course/releases" target="_blank" rel="noopener" style="display:inline-block;">下载 PDF 宣传册 →</a>
+    </section>
   </main>
 
   <footer class="footer">
-    © 2026 techdou · AIGC 实战入门 · 内容遵循课程版权声明
+    © 2026 techdou · AIGC 实战入门 · v5.0 政企普及版 · 内容遵循课程版权声明
   </footer>
 </body>
 </html>

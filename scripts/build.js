@@ -26,10 +26,20 @@ const LESSONS = [
   { n: 4,  file: "04_LLM和Agent有什么区别.md",             title: "LLM 和 Agent 有什么区别",          duration: "10 分钟", difficulty: "入门",    summary: "顾问与助理之分：为什么有的 AI 只能说，有的 AI 却能做。" },
   { n: 5,  file: "05_什么是Skill和API.md",                 title: "什么是 Skill 和 API",              duration: "12 分钟", difficulty: "进阶",    summary: "Skill 是技能包，API 是插座——AI 怎样获得专业能力并连接外部服务。" },
   { n: 6,  file: "06_Agent为什么能操作文件和软件.md",      title: "Agent 为什么能操作文件和软件",      duration: "13 分钟", difficulty: "进阶",    summary: "拆穿 Agent 的神通广大：背后是工具、权限与安全边界。" },
-  { n: 7,  file: "07_不同人群怎样使用Agent.md",            title: "不同人群怎样使用 Agent",           duration: "13 分钟", difficulty: "进阶",    summary: "学生、家长、上班族三类场景，同一套 Agent 思维怎么落地。" },
+  { n: 7,  file: "07_不同人群怎样使用Agent.md",            title: "不同人群怎样使用 Agent",           duration: "13 分钟", difficulty: "进阶",    summary: "家长、老师、办公人员三类场景，同一套 Agent 思维怎么落地。" },
   { n: 8,  file: "08_从文字到图片和视频的生成工作流.md",   title: "从文字到图片和视频的生成工作流",   duration: "13 分钟", difficulty: "进阶",    summary: "一条完整多模态工作流：Prompt → 图片 → 视频的节点串联。" },
   { n: 9,  file: "09_从口播稿到数字人和交互网页.md",       title: "从口播稿到数字人和交互网页",       duration: "14 分钟", difficulty: "实战",    summary: "把口播稿变成数字人和可点击的互动网页，串联起整条产出链。" },
   { n: 10, file: "10_AI趋势学习路径和后续课程.md",         title: "AI 趋势、学习路径和后续课程",      duration: "13 分钟", difficulty: "总结",    summary: "为什么现在值得学，普通人怎么继续学，以及下一步的进阶路径。" },
+];
+
+// v5.0 新增页面：课程总开场 + 4 个附录
+// 这些页面用 renderPage 渲染（简化版 renderLesson，无"第 N/10 节"标记，文件名自定义）
+const EXTRA_PAGES = [
+  { file: "00_课程总开场.md",                outFile: "intro.html",       eyebrow: "课程总开场", title: "课程总开场",         duration: "4 分钟",  summary: "这门课给谁看、能学到什么、需要什么基础——以及哪些不会承诺。" },
+  { file: "附录A_AIGC合规与法规.md",          outFile: "appendix-a.html",  eyebrow: "附录 A",     title: "AIGC 合规与法规",    duration: "15 分钟", summary: "生成式 AI 服务管理暂行办法、数据安全法、个保法、深度合成管理规定——红线在哪。" },
+  { file: "附录B_AIGC安全与风险.md",          outFile: "appendix-b.html",  eyebrow: "附录 B",     title: "AIGC 安全与风险",    duration: "15 分钟", summary: "数据泄露、幻觉、prompt 注入、深度合成滥用——真实案例与防范清单。" },
+  { file: "附录C_国产化与自主可控.md",         outFile: "appendix-c.html",  eyebrow: "附录 C",     title: "国产化与自主可控",    duration: "15 分钟", summary: "文心/通义/智谱/DeepSeek/Kimi/豆包/星火——国产大模型概览与选型建议。" },
+  { file: "附录D_行业落地实证.md",            outFile: "appendix-d.html",  eyebrow: "附录 D",     title: "行业落地实证",       duration: "15 分钟", summary: "政务、教育、医疗、制造、金融——AIGC 在真实行业的落地案例。" },
 ];
 
 // ---------- marked 配置 ----------
@@ -72,9 +82,14 @@ function escapeHtml(s) {
 }
 
 // 把 ../03_实践测试案例/assets/lessonXX/foo.png 改写为 assets/lessonXX/foo.png
+// v5.0: 同时支持 appendixX/foo.png 和 promo/foo.png
 function rewriteImagePath(href) {
-  const m = href.match(/lesson(\d+)\/([^/]+)$/);
-  if (m) return `${ASSETS_REL}/lesson${m[1]}/${m[2]}`;
+  const mLesson = href.match(/lesson(\d+)\/([^/]+)$/);
+  if (mLesson) return `${ASSETS_REL}/lesson${mLesson[1]}/${mLesson[2]}`;
+  const mAppendix = href.match(/(appendix[A-D])\/([^/]+)$/);
+  if (mAppendix) return `${ASSETS_REL}/${mAppendix[1]}/${mAppendix[2]}`;
+  const mPromo = href.match(/promo\/([^/]+)$/);
+  if (mPromo) return `${ASSETS_REL}/promo/${mPromo[1]}`;
   return href;
 }
 
@@ -215,6 +230,83 @@ function renderLesson(lesson) {
 `;
 }
 
+// ---------- v5.0 额外页面（总开场 + 附录）模板 ----------
+// 复用 renderLesson 的核心逻辑，但不带"第 N/10 节"标记，文件名自定义
+function renderPage(page) {
+  const srcPath = path.join(SRC_DIR, page.file);
+  let md = fs.readFileSync(srcPath, "utf8");
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  // 标题优先用 page.title（避免附录文件名里的 H1 格式差异）
+  const title = page.title;
+  const { duration, goal } = extractIntro(md);
+
+  md = stripH1(md);
+  md = stripIntroBlockquote(md);
+  let bodyHtml = marked.parse(md);
+  bodyHtml = bodyHtml.replace(/<p>(<figure[\s\S]*?<\/figure>)<\/p>/g, "$1");
+  bodyHtml = bodyHtml.replace(/<p>(<div class="mermaid-wrap"[\s\S]*?<\/div>)<\/p>/g, "$1");
+  bodyHtml = bodyHtml.replace(/<p>\s*<\/p>/g, "");
+
+  const metaParts = [];
+  if (duration) metaParts.push(`建议 ${escapeHtml(duration)}`);
+  metaParts.push(escapeHtml(page.eyebrow));
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(title)} · AIGC 实战入门</title>
+  <meta name="description" content="${escapeHtml(page.summary)}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">AIGC 实战入门</a>
+    <span class="topbar__spacer"></span>
+    <a class="topbar__meta" href="index.html" style="text-decoration:none;color:var(--coffee-4)">返回目录 ↑</a>
+  </header>
+
+  <main>
+    <article class="lesson">
+      <p class="lesson__eyebrow">${escapeHtml(page.eyebrow)}</p>
+      <h1 class="lesson__title">${escapeHtml(title)}</h1>
+      <p class="lesson__meta">${metaParts.join(" · ")}</p>
+
+      <div class="lesson__intro">
+        ${goal ? `<p><strong>本节目标</strong></p><p>${escapeHtml(goal)}</p>` : ""}
+        ${duration ? `<p><strong>建议时长</strong>：${escapeHtml(duration)}</p>` : ""}
+      </div>
+
+      <div class="lesson__body">
+        ${bodyHtml}
+      </div>
+    </article>
+
+    <nav class="lesson-nav" aria-label="返回目录">
+      <a class="lesson-nav__link" href="index.html" rel="prev">
+        <span class="lesson-nav__label">← 返回目录</span>
+        <span class="lesson-nav__title">课程首页</span>
+      </a>
+      <span class="lesson-nav__link lesson-nav__placeholder" aria-hidden="true"></span>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    © 2026 techdou · AIGC 实战入门 · <a href="index.html">返回目录</a>
+  </footer>
+
+  <script type="module" src="assets/mermaid-init.js"></script>
+</body>
+</html>
+`;
+}
+
 // ---------- 首页 index.html 模板 ----------
 function renderIndex() {
   const cards = LESSONS.map(l => {
@@ -231,13 +323,25 @@ function renderIndex() {
     </a>`;
   }).join("\n      ");
 
+  // v5.0: 附录卡片
+  const appendixCards = EXTRA_PAGES.slice(1).map(p => {
+    return `<a class="card card--appendix" href="${p.outFile}">
+      <span class="card__num">${escapeHtml(p.eyebrow.replace("附录 ", ""))}</span>
+      <h3 class="card__title">${escapeHtml(p.title)}</h3>
+      <p class="card__desc">${escapeHtml(p.summary)}</p>
+      <span class="card__meta">建议 ${escapeHtml(p.duration)} <span class="card__arrow">→</span></span>
+    </a>`;
+  }).join("\n      ");
+
+  const introPage = EXTRA_PAGES[0];
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>普通人也能学会的 AIGC 实战入门 · 10 节小课</title>
-  <meta name="description" content="面向零基础成人的 AIGC 实战入门课，10 节短课讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流，全程贯穿一个真实项目。">
+  <title>普通人也能学会的 AIGC 实战入门 · 10 节小课 + 政企普及附录</title>
+  <meta name="description" content="面向零基础成人的 AIGC 实战入门课，10 节短课 + 4 个合规与产业附录，讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流，全程贯穿一个真实项目。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap">
@@ -253,22 +357,38 @@ function renderIndex() {
 
   <section class="hero">
     <div class="hero__inner">
-      <p class="hero__eyebrow">techdou · AIGC mini course</p>
+      <p class="hero__eyebrow">techdou · AIGC mini course · v5.0 政企普及版</p>
       <h1 class="hero__title">普通人也能学会的<br>AIGC 实战入门</h1>
-      <p class="hero__sub">10 节短课，每节一杯咖啡的时间。从认识 AI 到把一个真实想法做成能交付的作品——零基础也能跟得上。</p>
-      <a class="hero__cta" href="lesson-01.html">从第 1 节开始 →</a>
+      <p class="hero__sub">10 节核心讲义 + 4 个合规与产业附录。从认识 AI 到把一个真实想法做成能交付的作品——零基础也能跟得上。</p>
+      <a class="hero__cta" href="${introPage.outFile}">从课程总开场开始 →</a>
+      <a class="hero__cta hero__cta--secondary" href="lesson-01.html">直接进第 1 节</a>
     </div>
+    <figure class="hero__art" style="margin:24px 0 0;text-align:center;">
+      <img src="assets/promo/01_课程主视觉海报.png" alt="课程主视觉：普通人也能学会的 AIGC 实战入门" style="max-width:100%;border-radius:12px;box-shadow:0 8px 28px rgba(31,41,55,.12);" loading="lazy" />
+    </figure>
   </section>
 
   <main class="catalog" id="catalog">
-    <h2 class="catalog__heading">课程目录</h2>
+    <h2 class="catalog__heading">课程目录 · 10 节核心讲义</h2>
     <div class="catalog__grid">
       ${cards}
     </div>
+
+    <h2 class="catalog__heading" style="margin-top:56px;">附录 · 合规与产业专题</h2>
+    <p style="color:var(--coffee-3);margin:-8px 0 20px;font-size:15px;">政府/企业 AIGC 普及推广的权威背书层——法规、安全、国产化、行业实证。</p>
+    <div class="catalog__grid">
+      ${appendixCards}
+    </div>
+
+    <section class="catalog__pdf" style="margin:56px auto 0;padding:28px;border:1px solid var(--coffee-1);border-radius:12px;background:var(--cream-0);max-width:720px;text-align:center;">
+      <h3 style="margin:0 0 8px;color:var(--coffee-4);">需要完整印刷版？</h3>
+      <p style="color:var(--coffee-3);margin:0 0 16px;">74 页 A4 PDF 宣传册，含封面、版权页、目录、全部讲义与附录，适合政企培训现场分发。</p>
+      <a class="hero__cta" href="https://github.com/techdou/aigc-mini-course/releases" target="_blank" rel="noopener" style="display:inline-block;">下载 PDF 宣传册 →</a>
+    </section>
   </main>
 
   <footer class="footer">
-    © 2026 techdou · AIGC 实战入门 · 内容遵循课程版权声明
+    © 2026 techdou · AIGC 实战入门 · v5.0 政企普及版 · 内容遵循课程版权声明
   </footer>
 </body>
 </html>
@@ -292,7 +412,16 @@ function main() {
     fs.writeFileSync(out, html, "utf8");
     console.log(`[build] ✓ lesson-${pad(l.n)}.html  ←  ${l.file}`);
   }
-  console.log("[build] 完成。共 %d 节 + 首页。", LESSONS.length);
+
+  // v5.0: 写额外页面（总开场 + 附录）
+  for (const p of EXTRA_PAGES) {
+    const html = renderPage(p);
+    const out = path.join(OUT_DIR, p.outFile);
+    fs.writeFileSync(out, html, "utf8");
+    console.log(`[build] ✓ ${p.outFile}  ←  ${p.file}`);
+  }
+
+  console.log("[build] 完成。共 %d 节 + %d 个附录/总开场页 + 首页。", LESSONS.length, EXTRA_PAGES.length);
 }
 
 main();

@@ -44,6 +44,11 @@
     E --&gt; F[图片 视频 语音 网页]</pre></div><p>现在，Skill 和 API 一旦连起来，整条链路就非常完整了。比如我们后面要用到的 Agnes 工作流，本质上就是把图片和视频生成能力通过 API 接进来，再通过可视化工作流界面让人更容易使用；而 Boson 这样的语音和数字人能力，也同样是通过对应 API 被调用，再由 Skill 或脚本封装成更适合 Agent 使用的形式。</p>
 <figure><img src="assets/lesson05/03_完整调用链路图.png" alt="图 3：完整调用链路——Agent、Skill 与 API 是怎样协作的" loading="lazy" /><figcaption>图 3：完整调用链路——Agent、Skill 与 API 是怎样协作的</figcaption></figure>
 <p>这一节有一个特别值得学生建立的认知：当你真正理解 Skill 和 API 之后，你面对工具就不容易“神化”它们。你会知道，很多看似神奇的产品，其实都是在底层模型能力之上，做了更友好的封装、界面和流程组织。这样你以后看到新工具，也不会一下子被吓住，而是会问：它用了什么模型，靠什么接口，封装成了什么能力，适合什么任务。</p>
+<p>为了让&quot;调用&quot;这件事不再停留在概念上，我们直接看一条真实的命令。课程里后面要用的 Agnes 生图能力，本质上就是通过 API 调起来的。它在我们这台电脑上被封装成了一个 Python 脚本，调用方式长这样（Windows 命令行）：</p>
+<pre><code class="language-bash">python %USERPROFILE%\.agents\skills\agnes-ai-generation-skill\scripts\agnes_api.py image ^
+  --prompt &quot;A cute orange cat and a small blue fish standing side by side, children book illustration, simple flat vector style, bright friendly colors, clean plain white background, centered composition, no text&quot; ^
+  --size 1024x1024</code></pre><p>你看，这一条命令里其实就同时包含了我们这一节讲的三个东西：<code>agnes_api.py</code> 这个脚本本身，相当于一个封装好的 <strong>Skill</strong>（它知道&quot;生成图片该走哪几步、传哪些参数&quot;）；<code>image</code> 是它的子命令，告诉你这次要调的是&quot;图片生成&quot;这个能力；<code>--prompt</code> 和 <code>--size</code> 就是你传进去的参数；而它背后真正去请求的那个图片模型服务，靠的就是 <strong>API</strong>。你不用记命令细节，只要看懂这一层结构：<strong>Skill 决定&quot;怎么做&quot;，参数决定&quot;做成什么样&quot;，API 负责&quot;把请求送到模型那里再拿结果回来&quot;</strong>。这条命令在第 8 节课后任务里会原样用到，到时你会亲手跑一次。</p>
+<p>再补一句：很多人第一次看到这种命令会紧张，觉得&quot;是不是要先学编程&quot;。其实不用。今天大多数 Agent 平台（比如前面提到的 Coze、Dify，还有我们后面会用的 Agnes Workbench）都已经把这种命令做成了可视化界面——你只要在画布上拖节点、填框框，平台会自动帮你拼出类似的调用。会看命令，是为了你以后遇到问题能&quot;看得懂、能 debug&quot;；但日常使用，根本不用手敲。</p>
 <h3>屏幕演示建议</h3>
 <p>这一节不建议让学生一开始就看大量接口文档，而是通过三张图来理解。先用 Skill 技能包图建立直觉，再用 API 插座图解释“连接能力”的概念，最后用完整链路图收束。若要加一个现场示例，建议只口头举例：比如“用户说要一张宣传图，Agent 通过 Skill 调用图片 API，模型生成结果，再回到工作流中预览”。</p>
 <h3>本节跟做</h3>

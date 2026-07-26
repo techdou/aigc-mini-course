@@ -22,11 +22,11 @@
     <article class="lesson">
       <p class="lesson__eyebrow">第 4 节</p>
       <h1 class="lesson__title">LLM 和 Agent 有什么区别</h1>
-      <p class="lesson__meta">建议 10 分钟 · 难度 入门 · 第 4 / 10 节</p>
+      <p class="lesson__meta">建议 11 分钟 · 难度 入门 · 第 4 / 10 节</p>
 
       <div class="lesson__intro">
         <p><strong>本节目标</strong></p><p>把“会回答”和“会执行”讲透，让学生真正理解智能体。</p>
-        <p><strong>建议时长</strong>：10 分钟</p>
+        <p><strong>建议时长</strong>：11 分钟</p>
       </div>
 
       <div class="lesson__body">
@@ -45,6 +45,7 @@
 <p>不过这里有一个特别重要的安全边界，必须反复提醒。Agent 不是天然拥有整台电脑的控制权。它能做什么，取决于三个条件：产品有没有提供对应工具，用户有没有明确授权，以及当前运行环境是否允许。也就是说，Agent 的能力并不神秘，它是建立在可见、可管、可限制的执行机制上的。</p>
 <figure><img src="assets/lesson04/03_权限边界图.png" alt="图 3：Agent 只有在授权范围内才可以访问文件和工具" loading="lazy" /><figcaption>图 3：Agent 只有在授权范围内才可以访问文件和工具</figcaption></figure>
 <p>为了帮助大家更准确地区分，我们来做一个小判断。像“请帮我总结这段会议纪要”“请帮我把这段文字改得更口语化”，这类任务主要依赖 LLM 的语言能力；而“请读取这个文件夹里的资料并生成分类清单”“请根据这份资料制作一个五页 PPT”，就更接近 Agent 的执行型任务。两者并不对立，很多时候 Agent 的底层仍然要靠 LLM 来理解任务，只是它在上面又加了一层“行动力”。</p>
+<p>为了让这个区分更落地，我们拿市面上几个大家熟悉的工具来对照一下。<strong>ChatGPT</strong>（OpenAI 出品）和 <strong>Claude</strong>（Anthropic 出品）这两个产品，核心定位更偏向 LLM——它们最强的能力是语言理解和生成，你问它问题、让它写东西，它表现非常出色；虽然现在也加了文件读取、联网、代码执行等工具能力，但产品的&quot;骨架&quot;仍然是对话式语言模型。而字节跳动推出的 <strong>Coze（扣子）</strong>，定位则明显偏向 Agent 编排——它一开始就是奔着&quot;让普通人搭智能体&quot;去的，你能在一个画布上把模型、插件、工作流、技能 Skill 串起来，让 AI 真的去执行多步骤任务，而不只是和你聊天。再比如国内常见的 Dify、FastGPT、Cherry Studio 这类工具，也都在 Agent / 工作流编排这一侧。所以下次你看到一个 AI 产品，可以先问自己一句：<strong>它的强项是&quot;会说&quot;，还是&quot;会做&quot;？</strong> 这往往就决定了它更偏 LLM，还是更偏 Agent。</p>
 <h3>屏幕演示建议</h3>
 <p>这一节可以用两个并排的小示例来录。左边示例让普通 LLM 说明“如果你要整理文件夹，建议怎样做”；右边示例则展示 Agent 的工作流程图，让学生看懂：前者给建议，后者走流程。即使这一节还不真正执行文件整理，也已经能为下一节的实操做好心理预备。</p>
 <h3>本节跟做</h3>

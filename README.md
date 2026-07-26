@@ -2,9 +2,9 @@
 
 # AIGC 实战入门
 
-**普通人也能学会的 AIGC 实战入门 · 10 节小课讲义站点**
+**普通人也能学会的 AIGC 实战入门 · 10 节核心讲义 + 4 个政企普及附录**
 
-从认识 AI 到把一个真实想法做成能交付的作品——零基础也能跟得上。
+v5.0 政企 AIGC 普及版——从认识 AI 到把一个真实想法做成能交付的作品，零基础也能跟得上。
 
 </div>
 
@@ -12,16 +12,19 @@
 
 ## 这是什么
 
-一套面向零基础成人的 AIGC 实战入门课程讲义，10 节短课讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流。全程贯穿一个真实项目「豆懂 AI 动物英语微课」，把抽象概念落到一个能看见、能检查的成品上。
+一套面向零基础成人的 AIGC 实战入门课程讲义。**10 节核心课**讲清 LLM、Prompt、Agent、Skill、API 与多模态工作流；**4 个附录**覆盖合规法规、安全风险、国产化选型、行业实证，作为政府/企业 AIGC 普及推广的权威背书层。全程贯穿一个真实项目「豆懂 AI 动物英语微课」，把抽象概念落到一个能看见、能检查的成品上。
 
-本仓库是这套讲义的**静态网站版本**，由 [lengyi-markdown-editor](https://github.com/woyin2024/lengyi-markdown-editor) 的同款渲染内核（marked + mermaid）预渲染成纯 HTML，托管在 GitHub Pages 上。
+本仓库是这套讲义的**静态网站版本**（翻页册），由 [lengyi-markdown-editor](https://github.com/woyin2024/lengyi-markdown-editor) 的同款渲染内核（marked + mermaid）预渲染成纯 HTML，托管在 GitHub Pages 上。
 
 **线上地址**：<https://techdou.github.io/aigc-mini-course/>
 
 ## 课程目录
 
+### 10 节核心讲义（主线）
+
 | 节次 | 主题 | 时长 | 难度 |
 |---|---|---|---|
+| 开场 | 课程总开场 | 4 分钟 | — |
 | 01 | AI 到底能为普通人做什么 | 8 分钟 | 入门 |
 | 02 | 什么是大语言模型 LLM | 12 分钟 | 入门 |
 | 03 | 什么是提示词 Prompt | 12 分钟 | 入门 |
@@ -33,21 +36,37 @@
 | 09 | 从口播稿到数字人和交互网页 | 14 分钟 | 实战 |
 | 10 | AI 趋势、学习路径和后续课程 | 13 分钟 | 总结 |
 
+### 4 个附录（副线 · v5.0 新增）
+
+| 附录 | 主题 | 时长 |
+|---|---|---|
+| A | AIGC 合规与法规 | 15 分钟 |
+| B | AIGC 安全与风险 | 15 分钟 |
+| C | 国产化与自主可控 | 15 分钟 |
+| D | 行业落地实证 | 15 分钟 |
+
 ## 仓库结构
 
 ```
 .
-├── index.html                 # 课程首页（10 节导航）
-├── lesson-01.html ~ 10.html   # 单节讲义页
+├── index.html                 # 课程首页（10 节 + 附录导航 + PDF 下载）
+├── intro.html                 # 课程总开场（v5.0 新增）
+├── lesson-01.html ~ 10.html   # 10 节核心讲义页
+├── appendix-a.html ~ d.html   # 4 个附录页（v5.0 新增）
 ├── assets/                    # 站点资源
-│   ├── tokens.css             # 设计令牌（方向 B 教育温暖系）
+│   ├── tokens.css             # 设计令牌（教育温暖系）
 │   ├── site.css               # 共用排版与组件
 │   ├── mermaid-init.js        # mermaid 客户端渲染初始化
-│   └── lesson01~10/           # 各节配图（PNG）
+│   ├── lesson01~10/           # 各节配图（PNG）
+│   ├── appendixA~D/           # 附录配图（v5.0 新增）
+│   └── promo/                 # 宣传主视觉、封面、学习路径图（v5.0 新增）
+├── demo/                      # 贯穿项目成品（豆懂 AI 动物英语微课）
 ├── src/                       # 讲义 Markdown 源
-│   └── 01.md ~ 10.md
+│   ├── 00_课程总开场.md        # v5.0 新增
+│   ├── 01-10_*.md             # 10 节讲义
+│   └── 附录A~D_*.md           # 4 个附录（v5.0 新增）
 ├── scripts/
-│   ├── build.js               # 预渲染脚本：md → HTML
+│   ├── build.js               # 预渲染脚本：md → HTML（支持 00 和附录）
 │   └── serve.js               # 本地预览服务器
 ├── design-system/
 │   └── aigc-mini-course-design-spec.md  # 设计规格文档

@@ -33,6 +33,18 @@ flowchart LR
 
 这一节有一个特别值得学生建立的认知：当你真正理解 Skill 和 API 之后，你面对工具就不容易“神化”它们。你会知道，很多看似神奇的产品，其实都是在底层模型能力之上，做了更友好的封装、界面和流程组织。这样你以后看到新工具，也不会一下子被吓住，而是会问：它用了什么模型，靠什么接口，封装成了什么能力，适合什么任务。
 
+为了让"调用"这件事不再停留在概念上，我们直接看一条真实的命令。课程里后面要用的 Agnes 生图能力，本质上就是通过 API 调起来的。它在我们这台电脑上被封装成了一个 Python 脚本，调用方式长这样（Windows 命令行）：
+
+```bash
+python %USERPROFILE%\.agents\skills\agnes-ai-generation-skill\scripts\agnes_api.py image ^
+  --prompt "A cute orange cat and a small blue fish standing side by side, children book illustration, simple flat vector style, bright friendly colors, clean plain white background, centered composition, no text" ^
+  --size 1024x1024
+```
+
+你看，这一条命令里其实就同时包含了我们这一节讲的三个东西：`agnes_api.py` 这个脚本本身，相当于一个封装好的 **Skill**（它知道"生成图片该走哪几步、传哪些参数"）；`image` 是它的子命令，告诉你这次要调的是"图片生成"这个能力；`--prompt` 和 `--size` 就是你传进去的参数；而它背后真正去请求的那个图片模型服务，靠的就是 **API**。你不用记命令细节，只要看懂这一层结构：**Skill 决定"怎么做"，参数决定"做成什么样"，API 负责"把请求送到模型那里再拿结果回来"**。这条命令在第 8 节课后任务里会原样用到，到时你会亲手跑一次。
+
+再补一句：很多人第一次看到这种命令会紧张，觉得"是不是要先学编程"。其实不用。今天大多数 Agent 平台（比如前面提到的 Coze、Dify，还有我们后面会用的 Agnes Workbench）都已经把这种命令做成了可视化界面——你只要在画布上拖节点、填框框，平台会自动帮你拼出类似的调用。会看命令，是为了你以后遇到问题能"看得懂、能 debug"；但日常使用，根本不用手敲。
+
 ### 屏幕演示建议
 
 这一节不建议让学生一开始就看大量接口文档，而是通过三张图来理解。先用 Skill 技能包图建立直觉，再用 API 插座图解释“连接能力”的概念，最后用完整链路图收束。若要加一个现场示例，建议只口头举例：比如“用户说要一张宣传图，Agent 通过 Skill 调用图片 API，模型生成结果，再回到工作流中预览”。

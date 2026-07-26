@@ -22,11 +22,11 @@
     <article class="lesson">
       <p class="lesson__eyebrow">第 6 节</p>
       <h1 class="lesson__title">Agent 为什么能操作文件和软件</h1>
-      <p class="lesson__meta">建议 13 分钟 · 难度 进阶 · 第 6 / 10 节</p>
+      <p class="lesson__meta">建议 14 分钟 · 难度 进阶 · 第 6 / 10 节</p>
 
       <div class="lesson__intro">
         <p><strong>本节目标</strong></p><p>让学生在一个真实案例中看见 Agent 的执行能力，也看见它的安全边界。</p>
-        <p><strong>建议时长</strong>：13 分钟</p>
+        <p><strong>建议时长</strong>：14 分钟</p>
       </div>
 
       <div class="lesson__body">
@@ -40,14 +40,21 @@
     D --&gt; E[备份原件]
     E --&gt; F[执行整理]
     F --&gt; G[生成 CSV 和报告]
-    G --&gt; H[人工复核]</pre></div><figure><img src="assets/lesson06/02_安全执行流程图.png" alt="图 2：Agent 文件整理的安全执行流程" loading="lazy" /><figcaption>图 2：Agent 文件整理的安全执行流程</figcaption></figure>
+    G --&gt; H[人工复核]</pre></div><figure><img src="assets/lesson06/03_安全执行流程图.png" alt="图 2：Agent 文件整理的安全执行流程" loading="lazy" /><figcaption>图 2：Agent 文件整理的安全执行流程</figcaption></figure>
 <p>这条流程看起来很“慢”，但它正好体现了一件重要的事：Agent 不是莽撞地替你乱动文件，而是应该在明确边界下工作。我们在正式演示时，会先把待整理文件复制到一个独立工作区，再要求 Agent 只读分析，先别动文件。它会列出文件数量、扩展名、可识别主题、可能重复的项目，以及建议怎样分类和命名。这个阶段的价值，是让学生看见 Agent 的“判断力”。</p>
 <p>接下来，只有在人工确认之后，它才进入执行阶段。执行时还要先创建备份目录，确保原始文件都能找回；然后再按我们约定好的规则分类，比如放入“课程讲义”“宣传素材”“数据”“待确认”等目录，并生成一份 CSV 清单和整理报告。这样一来，整个过程就不是“神秘黑箱”，而是一条可检查、可追踪的执行链路。</p>
-<figure><img src="assets/lesson06/03_整理后文件夹占位图.png" alt="图 3：整理后的文件夹结构示意" loading="lazy" /><figcaption>图 3：整理后的文件夹结构示意</figcaption></figure>
+<p>好消息是，这一节我们不靠想象——课程包里已经准备好了一份<strong>真实的 before/after 演示资产</strong>，你随时可以打开来看。</p>
+<ul>
+<li><strong>整理前</strong>：打开 <code>03_实践测试案例/04_现成演示资产/Agent文件整理演示/待整理文件/</code>，你会看到 9 个混乱文件——有 <code>IMG_001.png</code> 这种光看名字完全猜不出内容的图，有 <code>会议记录.txt</code>、<code>学员数据.csv</code>、<code>参考资料.md</code>，还有最经典的&quot;版本灾难&quot;：<code>课程方案最终版.docx</code> 和 <code>课程方案最终版2.docx</code> 同时存在，外加一个 <code>未命名文档.docx</code>。这就是真实办公里最常见的状态。</li>
+<li><strong>整理后</strong>：打开同目录下的 <code>标准输出/</code>，你会看到 Agent 真正给出的成果——一个 <code>_backup_original/</code> 完整备份目录（原始 9 个文件一个不少），四个分类目录（<code>课程讲义/</code>、<code>宣传素材/</code>、<code>数据/</code>、<code>待确认/</code>），一份逐文件追踪的 <code>文件清单.csv</code>，还有一份 <code>整理报告.md</code>。</li>
+</ul>
+<p>特别值得看的是那份 <code>整理报告.md</code>。Agent 不是把 9 个文件一股脑塞进 4 个目录就完事，而是把判断逻辑也写清楚了：两份&quot;最终版&quot;它<strong>没有自动删除任何一份</strong>，而是标出来让人工对比；<code>IMG_001.png</code> 和 <code>未命名文档.docx</code> 它<strong>没有硬猜</strong>，而是放进了&quot;待确认&quot;目录，告诉你&quot;仅凭文件名无法判断用途&quot;。这恰恰是这门课最想让你建立的认知——<strong>靠谱的 Agent 不是什么都敢做，而是知道什么事情要交回给人决定。</strong> 录课时强烈建议你把这两份 before/after 同框展示，学生第一次看到这种真实对照，会比听十遍概念都管用。</p>
+<figure><img src="assets/lesson06/02_整理后文件夹占位图.png" alt="图 3：整理后的文件夹结构示意" loading="lazy" /><figcaption>图 3：整理后的文件夹结构示意</figcaption></figure>
 <h3>屏幕演示建议</h3>
 <p>正式录制时，这一节建议尽量用真实文件夹来录。课程包里已经准备了待整理文件和一份标准输出，你可以先展示原始文件夹，再让 Agent 走“只读分析”命令，然后展示它给出的分类建议。确认之后，再切到执行阶段，最后对照标准输出展示整理后的目录结构、CSV 和报告。这样一节下来，学生会第一次真正感受到：Agent 的价值不是“会聊天”，而是“会执行”。</p>
-<h3>本节跟做</h3>
+<h3>跟做口令</h3>
 <p>给学生的口令可以尽量自然一些。比如这样说：“请只读分析当前工作目录里的文件，不要移动、复制、删除或改名。先告诉我你看见了什么、你建议怎么分类、哪些地方有风险，然后等我确认。”确认后再说：“可以执行，但请先备份，再分类整理，最后给我一份清单和报告。”这种表达方式，本身就是一种非常实用的 Agent 沟通范式。</p>
+<h3>本节跟做</h3>
 <p>如果课堂条件允许，可以让学生在自己的一个小测试文件夹里试一次，不过一定要强调：不要直接拿重要资料做练习，必须使用副本。也可以直接使用课程包里的待整理文件做练习，再让学生对照标准输出进行检查。</p>
 <h3>本节小结</h3>
 <p>这一节最重要的认知是：<strong>Agent 能操作文件和软件，不是因为它神秘，而是因为它获得了授权、调用了工具，并沿着清晰流程去执行。</strong> 下一节我们把视野再打开一点，看不同身份的人究竟可以怎样把 Agent 用到自己的生活和工作里。</p>
