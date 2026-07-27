@@ -201,6 +201,18 @@ function renderLesson(lesson) {
       <div class="lesson__body">
         ${bodyHtml}
       </div>
+      ${lesson.n === 1 ? `<div class="demo-cta">
+        <div class="demo-cta__panel">
+          <div class="demo-cta__text">
+            <span class="demo-cta__badge">成品 Demo</span>
+            <strong>想看看这套微课做完长什么样？</strong>
+            <p>15 个动物朋友 · AI 生图 · 数字人老师 · 互动测验——这就是本课程十节内容串联起来的真实成品。</p>
+          </div>
+          <a class="demo-cta__btn" href="demo/index.html" target="_blank" rel="noopener">
+            点我试看 Demo →
+          </a>
+        </div>
+      </div>` : ""}
     </article>
 
     <nav class="lesson-nav" aria-label="上下节导航">
@@ -340,6 +352,18 @@ function renderIndex() {
       <img src="assets/promo/01_课程主视觉海报.png" alt="课程主视觉：普通人也能学会的 AIGC 实战入门" class="hero-banner__img" loading="lazy" />
     </a>`;
 
+  // v5.0: 成品 Demo 入口（紧挨海报下方，占满整行，引导用户体验贯穿项目成品）
+  const demoBanner = `<a class="card card--feature card--demo-banner" href="demo/index.html" target="_blank" rel="noopener">
+      <div class="demo-banner__inner">
+        <div class="demo-banner__text">
+          <span class="demo-banner__badge">成品 Demo · 先睹为快</span>
+          <strong>想看看这套微课做完长什么样？</strong>
+          <p>15 个动物朋友 · AI 生图 · 数字人老师讲解 · 互动测验——这就是本课程十节内容串联起来的真实成品，点开即可体验。</p>
+        </div>
+        <span class="demo-banner__btn">打开 Demo →</span>
+      </div>
+    </a>`;
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -374,6 +398,7 @@ function renderIndex() {
     <h2 class="catalog__heading">课程目录 · 10 节核心讲义</h2>
     <div class="catalog__grid">
       ${heroBanner}
+      ${demoBanner}
       ${cards}
     </div>
 

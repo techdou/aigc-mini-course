@@ -620,5 +620,64 @@ a:hover { background: var(--accent-soft); }
   object-position: center;
 }
 
+/* ============================================================
+   v5.0 成品 Demo 入口 banner（首页，海报下方，引导体验贯穿项目）
+   与 card--feature 等宽，左右双栏（文字+按钮）
+   ============================================================ */
+.card--demo-banner {
+  background: var(--amber-soft);
+}
+.demo-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  width: 100%;
+  flex-wrap: wrap;            /* 窄屏自动换行 */
+}
+.demo-banner__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1 1 320px;
+}
+.demo-banner__badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 2px 10px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-size: var(--text-xs, 12px);
+  font-weight: var(--fw-bold, 700);
+  border-radius: var(--r-pill);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-1);
+}
+.demo-banner__text strong {
+  font-family: var(--font-display);
+  font-size: var(--text-h4, 1.25rem);
+  color: var(--coffee-1);
+}
+.demo-banner__text p {
+  margin: 0;
+  color: var(--coffee-3);
+  font-size: var(--text-sm, 14px);
+  line-height: 1.6;
+}
+.demo-banner__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-strong);
+  color: #fff;
+  border-radius: var(--r-pill);
+  font-weight: var(--fw-bold, 700);
+  white-space: nowrap;
+}
+.card--demo-banner:hover .demo-banner__btn {
+  background: color-mix(in srgb, var(--accent-strong) 90%, #000 10%);
+}
+
 
 
